@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/npm/l/iterare.svg)](https://github.com/felixfbecker/iterare/blob/master/LICENSE.txt)
 [![Gitter](https://badges.gitter.im/felixfbecker/iterare.svg)](https://gitter.im/felixfbecker/iterare?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-ES6 Iterator library for applying multiple tranformations to a collection in a single iteration.
+ES6 Iterator library for applying multiple transformations to a collection in a single iteration.
 
 ## [API Documentation](http://iterare.surge.sh/)
 
@@ -51,7 +51,7 @@ new Set(
 But there is a problem: Instead of iterating once, you iterate 4 times (one time for converting, one time for filtering, one time for mapping, one time for converting back).
 For a large Set with thousands of elements, this has significant overhead.
 
-Other libraries like RxJS or plain NodeJS streams would support these kind of "pipelines" without multiple iterations, but they work only asynchronously.
+Other libraries like RxJS or plain NodeJS streams would support these kinds of "pipelines" without multiple iterations, but they work only asynchronously.
 
 With this library you can use many methods you know and love from `Array` and lodash while only iterating once - thanks to the ES6 [iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols):
 
