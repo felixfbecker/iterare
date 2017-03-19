@@ -77,8 +77,9 @@ This library is essentially
 
 Method                       | ops/sec
 -----------------------------|-----------------------------------------------:|
-Loop                         | 2,737,515 ops/sec ±1.97% (86 runs sampled)
-**iterare**                  | 1,896,945 ops/sec ±0.93% (84 runs sampled)
-Array method chain           | 332,721 ops/sec ±1.99% (85 runs sampled)
-Lodash (with lazy evalution) | 296,837 ops/sec ±3.99% (81 runs sampled)
-RxJS                         | 50,068 ops/sec ±3.21% (76 runs sampled)
+Loop                         | 2,562,637 ops/sec ±3.95% (80 runs sampled)
+**iterare**                  | 2,023,212 ops/sec ±1.38% (84 runs sampled)
+Array method chain           | 346,117 ops/sec ±2.68% (82 runs sampled)
+Lodash (with lazy evalution) | 335,890 ops/sec ±0.55% (85 runs sampled)
+RxJS                         | 29,480 ops/sec ±7.01% (51 runs sampled)
+

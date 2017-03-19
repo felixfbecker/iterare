@@ -178,7 +178,14 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
      * Equivalent to passing the Iterator to `new Set()`
      */
     toSet(): Set<T> {
-        return new Set(this)
+        const set = new Set<T>()
+        while (true) {
+            const { value, done } = this.next()
+            if (done) {
+                return set
+            }
+            set.add(value)
+        }
     }
 
     /**
