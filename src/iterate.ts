@@ -197,14 +197,14 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
 /**
  * Creates an Iterator with advanced chainable operator methods for any Iterable or Iterator
  */
-export function iterate<T>(collection: Iterator<T> | Iterable<T>) {
+export function iterate<T>(collection: Iterator<T> | Iterable<T>): IteratorWithOperators<T> {
     return new IteratorWithOperators(toIterator(collection))
 }
 
 /**
  * Creates an Iterator that emits pairs of values from the two passed Iterators
  */
-export function zip<A, B>(a: Iterator<A> | Iterable<A>, b: Iterator<B> | Iterable<B>) {
+export function zip<A, B>(a: Iterator<A> | Iterable<A>, b: Iterator<B> | Iterable<B>): IteratorWithOperators<[A, B]> {
     return new IteratorWithOperators(new ZipIterator(toIterator(a), toIterator(b)))
 }
 
