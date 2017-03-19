@@ -44,7 +44,7 @@ Much more readable is converting the `Set` to an array, using its methods and th
 new Set(
   Array.from(uris)
     .filter(uri => uri.startsWith('file://'))
-    .map(uri.substr('file:///'.length))
+    .map(uri => uri.substr('file:///'.length))
 )
 ```
 
@@ -60,7 +60,7 @@ import iterate from 'iterare'
 
 iterate(uris)
   .filter(uri => uri.startsWith('file://'))
-  .map(uri.substr('file:///'.length))
+  .map(uri => uri.substr('file:///'.length))
   .toSet()
 ```
 
