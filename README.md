@@ -83,3 +83,11 @@ Array method chain           | 346,117 ops/sec ±2.68% (82 runs sampled)
 Lodash (with lazy evalution) | 335,890 ops/sec ±0.55% (85 runs sampled)
 RxJS                         | 29,480 ops/sec ±7.01% (51 runs sampled)
 
+## Contributing
+
+The source is written in TypeScript.
+
+ - `npm run build` compiles TS
+ - `npm run watch` compiles on file changes
+ - `npm test` runs tests
+ - `npm run benchmark` runs the benchmark
