@@ -1,2 +1,2 @@
 
-export { iterate } from './iterate'
+export { iterate, zip } from './iterate'

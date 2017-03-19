@@ -4,17 +4,14 @@ import { FilterIterator } from './filter'
 import { FlattenIterator } from './flatten'
 import { MapIterator } from './map'
 import { toIterator } from './utils'
+import { ZipIterator } from './zip'
 
 export class IteratorWithOperators<T> implements IterableIterator<T> {
 
-    private source: Iterator<T>
-
     /**
-     * @param collection Iterable or Iterator to wrap
+     * @param source Iterator to wrap
      */
-    constructor(collection: Iterator<T> | Iterable<T>) {
-        this.source = toIterator(collection)
-    }
+    constructor(private source: Iterator<T>) {}
 
     /**
      * Returns a `{ value, done }` object that adheres to the Iterator protocol
@@ -201,7 +198,14 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
  * Creates an Iterator with advanced chainable operator methods for any Iterable or Iterator
  */
 export function iterate<T>(collection: Iterator<T> | Iterable<T>) {
-    return new IteratorWithOperators(collection)
+    return new IteratorWithOperators(toIterator(collection))
+}
+
+/**
+ * Creates an Iterator that emits pairs of values from the two passed Iterators
+ */
+export function zip<A, B>(a: Iterator<A> | Iterable<A>, b: Iterator<B> | Iterable<B>) {
+    return new IteratorWithOperators(new ZipIterator(toIterator(a), toIterator(b)))
 }
 
 export default iterate
