@@ -30,11 +30,11 @@ const uris = new Set([
 ])
 const paths = new Set()
 for (const uri of uris) {
-  if (uri.startsWith('file://')) {
+  if (!uri.startsWith('file://')) {
     continue
   }
   const path = uri.substr('file:///'.length)
-  result.add(path)
+  paths.add(path)
 }
 ```
 
@@ -70,3 +70,15 @@ Only when you call a method like `toSet()`, `reduce()` or pass it to a `for of` 
 This library is essentially
  - RxJS, but fully synchronous
  - lodash, but with first-class support for ES6 collections.
+
+## Performance
+
+[Benchmark](https://github.com/felixfbecker/iterare/blob/master/src/benchmark.ts) based on the example above:
+
+Method                       | ops/sec
+-----------------------------|-----------------------------------------------:|
+Loop                         | 2,737,515 ops/sec ±1.97% (86 runs sampled)
+**iterare**                  | 1,896,945 ops/sec ±0.93% (84 runs sampled)
+Array method chain           | 332,721 ops/sec ±1.99% (85 runs sampled)
+Lodash (with lazy evalution) | 296,837 ops/sec ±3.99% (81 runs sampled)
+RxJS                         | 50,068 ops/sec ±3.21% (76 runs sampled)
