@@ -22,7 +22,7 @@ Ever wanted to iterate over ES6 collections like `Map` or `Set` with `Array`-bui
 Lets say you have a large `Set` of URIs and want to get a `Set` back that contains file paths from all `file://` URIs.
 
 The loop solution is very clumsy and not very functional:
-```ts
+```javascript
 const uris = new Set([
   'file:///foo.txt',
   'http:///npmjs.com',
@@ -40,7 +40,7 @@ for (const uri of uris) {
 
 Much more readable is converting the `Set` to an array, using its methods and then converting back:
 
-```ts
+```javascript
 new Set(
   Array.from(uris)
     .filter(uri => uri.startsWith('file://'))
@@ -55,7 +55,7 @@ Other libraries like RxJS or plain NodeJS streams would support these kind of "p
 
 With this library you can use many methods you know and love from `Array` and lodash while only iterating once - thanks to the ES6 [iterator protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols):
 
-```ts
+```javascript
 import iterate from 'iterare'
 
 iterate(uris)
