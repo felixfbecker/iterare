@@ -1,6 +1,8 @@
 
 # `iterare`
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/felixfbecker/iterare.svg)](https://greenkeeper.io/)
+
 > lat. _to repeat, to iterate_
 
 [![Version](https://img.shields.io/npm/v/iterare.svg)](https://www.npmjs.com/package/iterare)
