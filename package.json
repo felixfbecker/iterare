@@ -1,0 +1,56 @@
+{
+  "name": "iterare",
+  "version": "0.0.1",
+  "description": "Array methods for ES6 Iterators",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "test": "mocha -r source-map-support/register lib/**/*.test.js",
+    "cover": "nyc mocha -r source-map-support/register lib/**/*.test.js",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "typedoc": "typedoc --out typedoc --tsconfig tsconfig.json --ignoreCompilerErrors --mode file"
+  },
+  "keywords": [
+    "iterator",
+    "iteration",
+    "functional",
+    "es6",
+    "collection",
+    "array",
+    "map",
+    "set",
+    "filter",
+    "reduce",
+    "flatten",
+    "concat",
+    "every",
+    "some"
+  ],
+  "author": "Felix Becker <felix.b@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felixfbecker/iterare"
+  },
+  "bugs": {
+    "url": "https://github.com/felixfbecker/iterare/issues"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "2.2.40",
+    "@types/node": "7.0.8",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
+    "source-map-support": "^0.4.14",
+    "typedoc": "^0.5.7",
+    "typescript": "~2.2.1"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.js"
+    ],
+    "exclude": [
+      "lib/**/*.test.js"
+    ]
+  }
+}

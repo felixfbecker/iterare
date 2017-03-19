@@ -1,0 +1,8 @@
+node_modules/
+.vscode/
+.git/
+lib/**/*.test.js
+src/
+coverage/
+.nyc_output/
+*.lcov
