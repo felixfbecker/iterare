@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Array methods for ES6 Iterators",
   "main": "lib/index.js",
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "mocha -r source-map-support/register lib/**/*.test.js",
