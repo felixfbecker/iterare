@@ -1,6 +1,6 @@
 {
   "name": "iterare",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Array methods for ES6 Iterators",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
