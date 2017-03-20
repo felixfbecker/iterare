@@ -4,5 +4,6 @@ node_modules/
 lib/**/*.test.js
 src/
 coverage/
+typedoc/
 .nyc_output/
 *.lcov
