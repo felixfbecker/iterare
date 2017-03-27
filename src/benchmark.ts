@@ -3,7 +3,8 @@
 
 import { Event, Suite } from 'benchmark'
 import * as _ from 'lodash'
-import { Observable } from 'rxjs'
+import 'rxjs'
+import { IteratorObservable } from 'rxjs/observable/IteratorObservable.js'
 import { iterate } from './iterate'
 
 const suite = new Suite()
@@ -51,16 +52,16 @@ suite.add('Lodash', () => {
     )
 })
 
-suite.add('RxJS', (deferred: any) => {
-    Observable.from(Array.from(hugeSet))
+suite.add('RxJS', () => {
+    new IteratorObservable<string>(hugeSet[Symbol.iterator]())
         .filter((uri: string) => uri.startsWith('file://'))
         .map(uri => uri.substr('file:///'.length))
         .toArray()
         .map(arr => new Set(arr))
         .subscribe(result => {
-            deferred.resolve()
+            // Finished
         })
-}, { defer: true })
+})
 
 suite.on('cycle', (event: Event) => {
     console.log(String(event.target))
