@@ -73,7 +73,7 @@ This library is essentially
 
 ## Performance
 
-[Benchmark](https://github.com/felixfbecker/iterare/blob/master/src/benchmark.ts) based on the example above:
+[Benchmark](https://github.com/felixfbecker/iterare/blob/master/src/benchmarks/map_filter_set.ts) based on the example above:
 
 Method                       | ops/sec
 -----------------------------|-----------------------------------------------:|
@@ -83,6 +83,25 @@ Array method chain           | 132 ops/sec ±1.84% (73 runs sampled)
 Lodash (with lazy evalution) | 179 ops/sec ±1.67% (77 runs sampled)
 RxJS                         | 204 ops/sec ±1.69% (75 runs sampled)
 
+## Lazy Evaluation
+
+Going a step further, if you only care about a specific number of elements in the end, only these elements will run through the pipeline:
+
+```javascript
+iterate(collection)
+  .filter(uri => uri.startsWith('file://'))
+  .take(5)
+```
+
+In this example, the filter predicate is called only until 5 elements have been found.
+The alternative with an array would call it for every element in the collection:
+
+```javascript
+Array.from(collection)
+  .filter(uri => uri.startsWith('file://'))
+  .slice(0, 5)
+```
+
 ## Contributing
 
 The source is written in TypeScript.
@@ -90,4 +109,4 @@ The source is written in TypeScript.
  - `npm run build` compiles TS
  - `npm run watch` compiles on file changes
  - `npm test` runs tests
- - `npm run benchmark` runs the benchmark
+ - `node lib/benchmarks/____` runs a benchmark

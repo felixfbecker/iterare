@@ -3,6 +3,7 @@ import { ConcatIterator } from './concat'
 import { FilterIterator } from './filter'
 import { FlattenIterator } from './flatten'
 import { MapIterator } from './map'
+import { TakeIterator } from './take'
 import { toIterator } from './utils'
 import { ZipIterator } from './zip'
 
@@ -47,6 +48,15 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
      */
     concat<C>(collection: Iterable<C> | Iterator<C>): IteratorWithOperators<T | C> {
         return new IteratorWithOperators(new ConcatIterator<T | C>([this.source, toIterator(collection)]))
+    }
+
+    /**
+     * Returns a new Iterator that emits slice of the source with n elements taken from the beginning
+     *
+     * @param limit The number of elements to take.
+     */
+    take(limit: number): IteratorWithOperators<T> {
+        return new IteratorWithOperators(new TakeIterator(this.source, limit))
     }
 
     /**

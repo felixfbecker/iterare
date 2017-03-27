@@ -11,7 +11,6 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "mocha -r source-map-support/register lib/**/*.test.js",
     "cover": "nyc mocha -r source-map-support/register lib/**/*.test.js",
-    "benchmark": "node lib/benchmark",
     "build": "tsc",
     "watch": "tsc -w",
     "typedoc": "typedoc --out typedoc --tsconfig tsconfig.json --ignoreCompilerErrors --mode file"
