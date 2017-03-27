@@ -5,7 +5,7 @@ import { Event, Suite } from 'benchmark'
 import * as _ from 'lodash'
 import 'rxjs'
 import { IteratorObservable } from 'rxjs/observable/IteratorObservable.js'
-import { iterate } from './iterate'
+import { iterate } from '../iterate'
 
 const suite = new Suite()
 
