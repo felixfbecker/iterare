@@ -29,6 +29,17 @@
     },
     {
       "type": "node",
+      "request": "launch",
+      "name": "Benchmark",
+      "program": "${workspaceRoot}/lib/benchmark.js",
+      "sourceMaps": true,
+      "protocol": "inspector",
+      "outFiles": [
+        "${workspaceRoot}/lib/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
       "request": "attach",
       "name": "Attach to Process",
       "address": "localhost",

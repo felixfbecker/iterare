@@ -10,7 +10,10 @@ const suite = new Suite()
 
 // Simulate iterating over a very lage Set of strings and applying a filter and a map on it
 
-const hugeSet = new Set(new Array<string>(10000).fill('file:///foo/bar'))
+const hugeSet = new Set<string>()
+for (let i = 0; i < 10000; i++) {
+    hugeSet.add('file:///foo/bar/' + i)
+}
 
 suite.add('Loop', () => {
     const result = new Set()
@@ -38,9 +41,10 @@ suite.add('Array method chain', () => {
 })
 
 suite.add('Lodash', () => {
+    // Need to convert to Array first, because lodash does not support Sets
+    // This uses lodash's lazy evaluation feature
     return new Set(
-        // This uses lodash's lazy evaluation feature
-        _(hugeSet)
+        _(Array.from(hugeSet))
             .filter((uri: string) => uri.startsWith('file://'))
             .map(uri => uri.substr('file:///'.length))
             .value()
@@ -52,6 +56,7 @@ suite.add('RxJS', (deferred: any) => {
         .filter((uri: string) => uri.startsWith('file://'))
         .map(uri => uri.substr('file:///'.length))
         .toArray()
+        .map(arr => new Set(arr))
         .subscribe(result => {
             deferred.resolve()
         })
