@@ -3,7 +3,7 @@ import { ConcatIterator } from './concat'
 import { FilterIterator } from './filter'
 import { FlattenIterator } from './flatten'
 import { MapIterator } from './map'
-import { TakeIterator } from './take'
+import { SliceIterator } from './slice'
 import { toIterator } from './utils'
 import { ZipIterator } from './zip'
 
@@ -56,7 +56,26 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
      * @param limit The number of elements to take.
      */
     take(limit: number): IteratorWithOperators<T> {
-        return new IteratorWithOperators(new TakeIterator(this.source, limit))
+        return new IteratorWithOperators(new SliceIterator(this.source, 0, limit + 1))
+    }
+
+    /**
+     * Returns a new Iterator that emits slice of the source with n elements dropped from the beginning
+     *
+     * @param n The number of elements to drop.
+     */
+    drop(n: number): IteratorWithOperators<T> {
+        return new IteratorWithOperators(new SliceIterator(this.source, n, Infinity))
+    }
+
+    /**
+     * Returns a new Iterator that emits a slice of the source
+     *
+     * @param {number} start Zero-based positive start index, inclusive
+     * @param {number} end Zero-based positive end index, exclusive, defaults to end of iterator
+     */
+    slice(start: number, end: number = Infinity): IteratorWithOperators<T> {
+        return new IteratorWithOperators(new SliceIterator(this.source, start, end))
     }
 
     /**

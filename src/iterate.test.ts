@@ -15,6 +15,22 @@ describe('IteratorWithOperators', () => {
             assert.equal(joined, '')
         })
     })
+    describe('take', () => {
+        it('should take n items from the beginning', () => {
+            const iterator = new IteratorWithOperators([1, 2, 3, 4][Symbol.iterator]()).take(2)
+            assert.equal(iterator.next().value, 1)
+            assert.equal(iterator.next().value, 2)
+            assert.equal(iterator.next().done, true)
+        })
+    })
+    describe('drop', () => {
+        it('should drop n items from the beginning', () => {
+            const iterator = new IteratorWithOperators([1, 2, 3, 4][Symbol.iterator]()).drop(2)
+            assert.equal(iterator.next().value, 3)
+            assert.equal(iterator.next().value, 4)
+            assert.equal(iterator.next().done, true)
+        })
+    })
     describe('reduce', () => {
         it('should reduce all emitted values by calling the reducer', () => {
             const iterator = new IteratorWithOperators([1, 2, 4, 3][Symbol.iterator]())
