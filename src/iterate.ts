@@ -39,6 +39,8 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
     /**
      * Returns a new Iterator of all elements predicate returns truthy for
      */
+    filter(predicate: (element: T) => boolean): IteratorWithOperators<T>;
+    filter<R extends T>(predicate: (element: T) => element is R): IteratorWithOperators<R>;
     filter(predicate: (element: T) => boolean): IteratorWithOperators<T> {
         return new IteratorWithOperators(new FilterIterator(this.source, predicate))
     }
