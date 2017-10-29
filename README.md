@@ -73,15 +73,34 @@ This library is essentially
 
 ## Performance
 
-[Benchmark](https://github.com/felixfbecker/iterare/blob/master/src/benchmarks/map_filter_set.ts) based on the example above:
+Benchmarks based on the examples above:
+
+### [`map` + `filter`](https://github.com/felixfbecker/iterare/blob/master/src/benchmarks/map_filter_set.ts)
+
+Simulate iterating over a very lage Set of strings and applying a filter and a map on it.
 
 Method                       | ops/sec
 -----------------------------|-----------------------------------------------:|
-Loop                         | 225 ops/sec ±1.87% (73 runs sampled)
-**iterare**                  | **211 ops/sec ±2.79% (73 runs sampled)**
-Array method chain           | 132 ops/sec ±1.84% (73 runs sampled)
-Lodash (with lazy evalution) | 179 ops/sec ±1.67% (77 runs sampled)
-RxJS                         | 204 ops/sec ±1.69% (75 runs sampled)
+Loop                         | 213 ops/sec ±1.51% (76 runs sampled)
+**iterare**                  | **197 ops/sec ±2.56% (75 runs sampled)**
+Lodash (with lazy evalution) | 150 ops/sec ±2.65% (74 runs sampled)
+RxJS                         | 147 ops/sec ±1.42% (79 runs sampled)
+Array method chain           | 117 ops/sec ±1.72% (72 runs sampled)
+IxJS                         | 97.00 ops/sec ±1.08% (68 runs sampled)
+
+### [`filter` + `take`](https://github.com/felixfbecker/iterare/blob/master/src/benchmarks/filter_take_set.ts)
+
+Simulate iterating over a very lage Set of strings and applying a filter on it, then taking only the first 1000 elements.
+A smart implementations should only apply the filter predicate to the first 5 elements.
+
+Method                       | ops/sec
+-----------------------------|-----------------------------------------------:|
+Loop                         | 1,043,208 ops/sec ±1.12% (82 runs sampled)
+**iterare**                  | **417,679 ops/sec ±1.58% (85 runs sampled)**
+RxJS                         | 78,862 ops/sec ±0.88% (84 runs sampled)
+IxJS                         | 38,534 ops/sec ±6.21% (46 runs sampled)
+Lodash (with lazy evalution) | 29.64 ops/sec ±1.65% (50 runs sampled)
+Array method chain           | 16.84 ops/sec ±2.01% (44 runs sampled)
 
 ## Lazy Evaluation
 

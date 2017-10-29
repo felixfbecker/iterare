@@ -2,6 +2,7 @@
 /* tslint:disable:no-console */
 
 import { Event, Suite } from 'benchmark'
+import * as Ix from 'ix'
 import * as _ from 'lodash'
 import 'rxjs'
 import { IteratorObservable } from 'rxjs/observable/IteratorObservable.js'
@@ -61,6 +62,13 @@ suite.add('RxJS', () => {
         .subscribe(result => {
             // Finished
         })
+})
+
+suite.add('IxJS', () => {
+    return Ix.Iterable.from(hugeSet)
+        .filter((uri: string) => uri.startsWith('file://'))
+        .map(uri => uri.substr('file:///'.length))
+        .toSet()
 })
 
 suite.on('cycle', (event: Event) => {
