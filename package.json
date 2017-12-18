@@ -16,7 +16,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "typedoc": "typedoc --out typedoc --tsconfig tsconfig.json --ignoreCompilerErrors --mode file",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "iterator",
