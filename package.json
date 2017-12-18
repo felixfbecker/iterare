@@ -15,7 +15,7 @@
     "cover": "nyc mocha -r source-map-support/register lib/**/*.test.js",
     "build": "tsc",
     "watch": "tsc -w",
-    "typedoc": "typedoc --out typedoc --tsconfig tsconfig.json --ignoreCompilerErrors --mode file",
+    "typedoc": "typedoc --out typedoc --tsconfig tsconfig.json --ignoreCompilerErrors --mode file --excludeExternals src",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "semantic-release": "semantic-release"
   },
@@ -63,8 +63,8 @@
     "source-map-support": "^0.4.14",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.6.0",
-    "typedoc": "^0.5.7",
-    "typescript": "~2.5.3"
+    "typedoc": "^0.9.0",
+    "typescript": "~2.6.2"
   },
   "nyc": {
     "include": [
