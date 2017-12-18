@@ -1,6 +1,4 @@
-
 export class ZipIterator<A, B> implements Iterator<[A, B]> {
-
     constructor(private a: Iterator<A>, private b: Iterator<B>) {}
 
     next(): IteratorResult<[A, B]> {

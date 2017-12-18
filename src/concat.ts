@@ -1,6 +1,4 @@
-
 export class ConcatIterator<T> implements Iterator<T> {
-
     constructor(private toConcat: Iterator<T>[]) {}
 
     next(): IteratorResult<T> {

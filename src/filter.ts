@@ -1,6 +1,4 @@
-
 export class FilterIterator<T> implements Iterator<T> {
-
     constructor(private source: Iterator<T>, private predicate: (element: T) => boolean) {}
 
     next(): IteratorResult<T> {

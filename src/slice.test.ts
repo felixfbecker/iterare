@@ -1,4 +1,3 @@
-
 import * as assert from 'assert'
 import { SliceIterator } from './slice'
 

@@ -1,8 +1,6 @@
-
 import { isIterable } from './utils'
 
 export class FlattenIterator<T> implements Iterator<T> {
-
     private inner?: Iterator<any>
 
     constructor(private outer: Iterator<any>) {}

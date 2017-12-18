@@ -1,4 +1,3 @@
-
 import { ConcatIterator } from './concat'
 import { FilterIterator } from './filter'
 import { FlattenIterator } from './flatten'
@@ -8,7 +7,6 @@ import { toIterator } from './utils'
 import { ZipIterator } from './zip'
 
 export class IteratorWithOperators<T> implements IterableIterator<T> {
-
     /**
      * @param source Iterator to wrap
      */
@@ -39,8 +37,8 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
     /**
      * Returns a new Iterator of all elements predicate returns truthy for
      */
-    filter(predicate: (element: T) => boolean): IteratorWithOperators<T>;
-    filter<R extends T>(predicate: (element: T) => element is R): IteratorWithOperators<R>;
+    filter(predicate: (element: T) => boolean): IteratorWithOperators<T>
+    filter<R extends T>(predicate: (element: T) => element is R): IteratorWithOperators<R>
     filter(predicate: (element: T) => boolean): IteratorWithOperators<T> {
         return new IteratorWithOperators(new FilterIterator(this.source, predicate))
     }
@@ -76,7 +74,7 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
      * @param {number} start Zero-based positive start index, inclusive
      * @param {number} end Zero-based positive end index, exclusive, defaults to end of iterator
      */
-    slice(start: number, end: number = Infinity): IteratorWithOperators<T> {
+    slice(start: number, end = Infinity): IteratorWithOperators<T> {
         return new IteratorWithOperators(new SliceIterator(this.source, start, end))
     }
 
@@ -92,14 +90,14 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
      * where each successive invocation is supplied the return value of the previous.
      * The first element of collection is used as the initial value.
      */
-    reduce(iteratee: (acc: T, val: T) => T): T;
+    reduce(iteratee: (acc: T, val: T) => T): T
     /**
      * Reduces the Iterator to a value which is the accumulated result of running each emitted element thru iteratee,
      * where each successive invocation is supplied the return value of the previous.
      *
      * @param initialValue The initial value for `acc`
      */
-    reduce<A>(iteratee: (acc: A, val: T) => A, initialValue: A): A;
+    reduce<A>(iteratee: (acc: A, val: T) => A, initialValue: A): A
     reduce(iteratee: (acc: any, val: any) => any, accumulator?: any): any {
         let result: IteratorResult<T>
         if (accumulator === undefined) {

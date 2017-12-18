@@ -1,6 +1,4 @@
-
 export class SliceIterator<T> implements Iterator<T> {
-
     private i = 0
 
     /**
@@ -8,7 +6,7 @@ export class SliceIterator<T> implements Iterator<T> {
      * @param {number} start Zero-based positive start index, inclusive
      * @param {number} end Zero-based positive end index, exclusive, defaults to end of iterator
      */
-    constructor(private source: Iterator<T>, private start: number, private end: number = Infinity) {}
+    constructor(private source: Iterator<T>, private start: number, private end = Infinity) {}
 
     next(): IteratorResult<T> {
         // Skip elements before start

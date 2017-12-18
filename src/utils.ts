@@ -1,4 +1,3 @@
-
 export function isIterator(candidate: any): candidate is Iterator<any> {
     return typeof candidate === 'object' && candidate !== null && typeof candidate.next === 'function'
 }

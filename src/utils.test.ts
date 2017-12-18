@@ -1,4 +1,3 @@
-
 import * as assert from 'assert'
 import { isIterable, isIterator, toIterator } from './utils'
 
@@ -24,7 +23,11 @@ describe('utils', () => {
     })
     describe('isIterator', () => {
         it('should return true for an Iterator', () => {
-            const iterator = { next() { /* empty */ } }
+            const iterator = {
+                next() {
+                    /* empty */
+                },
+            }
             assert.equal(isIterator(iterator), true)
         })
         it('should return false for an Iterable', () => {
@@ -47,7 +50,11 @@ describe('utils', () => {
             assert.equal(isIterable(iterable), true)
         })
         it('should return false for an Iterator', () => {
-            const iterator = { next() { /* empty */ } }
+            const iterator = {
+                next() {
+                    /* empty */
+                },
+            }
             assert.equal(isIterable(iterator), false)
         })
         it('should return false for null', () => {

@@ -1,4 +1,3 @@
-
 /* tslint:disable:no-console */
 
 import * as IxES6 from '@reactivex/ix-es2015-cjs'
@@ -90,7 +89,7 @@ suite.on('cycle', (event: Event) => {
     console.log(String(event.target))
 })
 
-suite.on('complete', function (this: Suite) {
+suite.on('complete', function(this: Suite) {
     console.log('Fastest is ' + this.filter('fastest').map('name' as any))
 })
 
