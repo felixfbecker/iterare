@@ -1,6 +1,8 @@
 .editorconfig
 .git/
 .nyc_output/
+.prettierignore
+.prettierrc
 .travis.yml
 .vscode/
 coverage/
