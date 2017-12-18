@@ -75,7 +75,7 @@
     ]
   },
   "release": {
-    "verify-conditions": [
+    "verifyConditions": [
       "@semantic-release/npm",
       "@semantic-release/github"
     ]
