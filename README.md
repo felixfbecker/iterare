@@ -1,5 +1,5 @@
 
-# `iterare`
+# iterare
 
 > lat. _to repeat, to iterate_
 
