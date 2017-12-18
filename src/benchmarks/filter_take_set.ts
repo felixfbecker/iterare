@@ -1,8 +1,9 @@
 
 /* tslint:disable:no-console */
 
+import * as IxES6 from '@reactivex/ix-es2015-cjs'
 import { Event, Suite } from 'benchmark'
-import * as Ix from 'ix'
+import * as IxES5 from 'ix'
 import * as _ from 'lodash'
 import 'rxjs'
 import { IteratorObservable } from 'rxjs/observable/IteratorObservable.js'
@@ -71,8 +72,15 @@ suite.add('RxJS', (deferred: any) => {
         })
 })
 
-suite.add('IxJS', () => {
-    return Ix.Iterable.from(hugeSet)
+suite.add('IxJS (ES5)', () => {
+    return IxES5.Iterable.from(hugeSet)
+        .filter((uri: string) => uri.startsWith('file://'))
+        .take(5)
+        .toSet()
+})
+
+suite.add('IxJS (ES6)', () => {
+    return IxES6.Iterable.from(hugeSet)
         .filter((uri: string) => uri.startsWith('file://'))
         .take(5)
         .toSet()

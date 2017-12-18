@@ -81,12 +81,13 @@ Simulate iterating over a very lage Set of strings and applying a filter and a m
 
 Method                       | ops/sec
 -----------------------------|-----------------------------------------------:|
-Loop                         | 213 ops/sec ±1.51% (76 runs sampled)
-**iterare**                  | **197 ops/sec ±2.56% (75 runs sampled)**
-Lodash (with lazy evalution) | 150 ops/sec ±2.65% (74 runs sampled)
-RxJS                         | 147 ops/sec ±1.42% (79 runs sampled)
-Array method chain           | 117 ops/sec ±1.72% (72 runs sampled)
-IxJS                         | 97.00 ops/sec ±1.08% (68 runs sampled)
+Loop | 466 ops/sec ±1.31% (84 runs sampled)
+**iterare** | 397 ops/sec ±2.01% (81 runs sampled)
+RxJS | 339 ops/sec ±0.77% (83 runs sampled)
+Array method chain | 257 ops/sec ±1.73% (79 runs sampled)
+Lodash | 268 ops/sec ±0.84% (81 runs sampled)
+IxJS (ES6) | 216 ops/sec ±0.81% (81 runs sampled)
+IxJS (ES5) | 141 ops/sec ±0.87% (77 runs sampled)
 
 ### [`filter` + `take`](https://github.com/felixfbecker/iterare/blob/master/src/benchmarks/filter_take_set.ts)
 
@@ -95,12 +96,13 @@ A smart implementations should only apply the filter predicate to the first 5 el
 
 Method                       | ops/sec
 -----------------------------|-----------------------------------------------:|
-Loop                         | 1,043,208 ops/sec ±1.12% (82 runs sampled)
-**iterare**                  | **417,679 ops/sec ±1.58% (85 runs sampled)**
-RxJS                         | 78,862 ops/sec ±0.88% (84 runs sampled)
-IxJS                         | 38,534 ops/sec ±6.21% (46 runs sampled)
-Lodash (with lazy evalution) | 29.64 ops/sec ±1.65% (50 runs sampled)
-Array method chain           | 16.84 ops/sec ±2.01% (44 runs sampled)
+Loop | 3,059,466 ops/sec ±0.75% (88 runs sampled)
+**iterare** | 963,257 ops/sec ±0.68% (89 runs sampled)
+IxJS (ES6) | 424,488 ops/sec ±0.63% (89 runs sampled)
+RxJS | 168,853 ops/sec ±2.58% (86 runs sampled)
+IxJS (ES5) | 107,961 ops/sec ±1.88% (78 runs sampled)
+Lodash | 41.71 ops/sec ±1.15% (54 runs sampled)
+Array method chain | 24.74 ops/sec ±3.69% (45 runs sampled)
 
 ## Lazy Evaluation
 

@@ -41,6 +41,7 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@reactivex/ix-es2015-cjs": "^2.2.0",
     "@types/benchmark": "^1.0.30",
     "@types/lodash": "^4.14.55",
     "@types/mocha": "^2.2.40",
