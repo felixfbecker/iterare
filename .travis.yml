@@ -12,16 +12,29 @@ script:
   - npm run lint
   - npm run build
   - npm run cover
-
-after_success:
-  # Upload coverage to codecov
   - nyc report --reporter=json
   - bash <(curl -s https://codecov.io/bash) -f coverage/coverage-final.json
 
-before_deploy:
-  - npm run typedoc
-deploy:
-  provider: surge
-  project: ./typedoc/
-  domain: iterare.surge.sh
-  skip_cleanup: true
+jobs:
+  include:
+    - stage: release
+      node_js: '8'
+      script:
+        - npm run semantic-release
+      before_deploy:
+        - npm run typedoc
+      deploy:
+        provider: surge
+        project: ./typedoc/
+        domain: iterare.surge.sh
+        skip_cleanup: true
+
+stages:
+  - test
+  - name: release
+    if: branch = master AND type = push AND fork = false
+
+branches:
+  only:
+    - master
+    - /^greenkeeper.*$/
