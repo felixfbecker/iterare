@@ -6,7 +6,7 @@
   "singleQuote": true,
   "overrides": [
     {
-      "files": "{*.js?(on),.prettierrc}",
+      "files": "{*.js?(on),*.md,.prettierrc}",
       "options": {
         "tabWidth": 2
       }

@@ -1,3 +1,6 @@
+.nyc_output/
+coverage/
 lib/
-package.json
 package-lock.json
+package.json
+typedoc/

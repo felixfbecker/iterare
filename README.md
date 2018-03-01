@@ -28,11 +28,11 @@ The loop solution is very clumsy and not very functional:
 const uris = new Set(['file:///foo.txt', 'http:///npmjs.com', 'file:///bar/baz.txt'])
 const paths = new Set()
 for (const uri of uris) {
-    if (!uri.startsWith('file://')) {
-        continue
-    }
-    const path = uri.substr('file:///'.length)
-    paths.add(path)
+  if (!uri.startsWith('file://')) {
+    continue
+  }
+  const path = uri.substr('file:///'.length)
+  paths.add(path)
 }
 ```
 
@@ -40,9 +40,9 @@ Much more readable is converting the `Set` to an array, using its methods and th
 
 ```javascript
 new Set(
-    Array.from(uris)
-        .filter(uri => uri.startsWith('file://'))
-        .map(uri => uri.substr('file:///'.length))
+  Array.from(uris)
+    .filter(uri => uri.startsWith('file://'))
+    .map(uri => uri.substr('file:///'.length))
 )
 ```
 
@@ -57,9 +57,9 @@ With this library you can use many methods you know and love from `Array` and lo
 import iterate from 'iterare'
 
 iterate(uris)
-    .filter(uri => uri.startsWith('file://'))
-    .map(uri => uri.substr('file:///'.length))
-    .toSet()
+  .filter(uri => uri.startsWith('file://'))
+  .map(uri => uri.substr('file:///'.length))
+  .toSet()
 ```
 
 `iterate` accepts any kind of Iterator or Iterable (arrays, collections, generators, ...) and returns a new Iterator object that can be passed to any Iterable-accepting function (collection constructors, `Array.from()`, `for of`, ...).
@@ -109,8 +109,8 @@ Going a step further, if you only care about a specific number of elements in th
 
 ```javascript
 iterate(collection)
-    .filter(uri => uri.startsWith('file://'))
-    .take(5)
+  .filter(uri => uri.startsWith('file://'))
+  .take(5)
 ```
 
 In this example, the filter predicate is called only until 5 elements have been found.
@@ -118,8 +118,8 @@ The alternative with an array would call it for every element in the collection:
 
 ```javascript
 Array.from(collection)
-    .filter(uri => uri.startsWith('file://'))
-    .slice(0, 5)
+  .filter(uri => uri.startsWith('file://'))
+  .slice(0, 5)
 ```
 
 ## Contributing
