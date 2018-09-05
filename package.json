@@ -59,7 +59,7 @@
     "nyc": "^10.1.2",
     "prettier": "1.11.1",
     "rxjs": "^5.2.0",
-    "semantic-release": "^11.0.2",
+    "semantic-release": "^15.9.12",
     "source-map-support": "^0.4.14",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.6.0",
@@ -72,12 +72,6 @@
     ],
     "exclude": [
       "lib/**/*.test.js"
-    ]
-  },
-  "release": {
-    "verifyConditions": [
-      "@semantic-release/npm",
-      "@semantic-release/github"
     ]
   }
 }
