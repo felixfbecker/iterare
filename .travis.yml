@@ -23,6 +23,7 @@ jobs:
     - stage: release
       node_js: '8'
       script:
+        - npm run build
         - npm run semantic-release
       before_deploy:
         - npm run typedoc

@@ -67,8 +67,8 @@ Only when you call a method like `toSet()`, `reduce()` or pass it to a `for of` 
 
 This library is essentially
 
-* RxJS, but fully synchronous
-* lodash, but with first-class support for ES6 collections.
+- RxJS, but fully synchronous
+- lodash, but with first-class support for ES6 collections.
 
 ## Performance
 
@@ -126,7 +126,7 @@ Array.from(collection)
 
 The source is written in TypeScript.
 
-* `npm run build` compiles TS
-* `npm run watch` compiles on file changes
-* `npm test` runs tests
-* `node lib/benchmarks/____` runs a benchmark
+- `npm run build` compiles TS
+- `npm run watch` compiles on file changes
+- `npm test` runs tests
+- `node lib/benchmarks/____` runs a benchmark

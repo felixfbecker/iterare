@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "npm run prettier && npm run tslint",
     "tslint": "tslint -c tslint.json -p tsconfig.json 'src/**/*.ts'",
-    "prettier": "prettier --write --list-different '**/*.{ts,json,js,md}'",
+    "prettier": "prettier --config .prettierrc --write --list-different \"**/{*.{ts,json,js,md,yml},*.*.yml}\"",
     "test": "mocha -r source-map-support/register lib/**/*.test.js",
     "cover": "nyc mocha -r source-map-support/register lib/**/*.test.js",
     "build": "tsc",
@@ -57,7 +57,7 @@
     "lodash": "^4.17.4",
     "mocha": "^3.2.0",
     "nyc": "^10.1.2",
-    "prettier": "1.11.1",
+    "prettier": "^1.14.2",
     "rxjs": "^5.2.0",
     "semantic-release": "^15.9.12",
     "source-map-support": "^0.4.14",
