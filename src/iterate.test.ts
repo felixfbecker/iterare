@@ -147,8 +147,9 @@ describe('IteratorWithOperators', () => {
     })
     describe('toSet', () => {
         it('should return all items as a Map', () => {
-            const iterator = new IteratorWithOperators([['foo', 1], ['bar', 2]][Symbol.iterator]())
-            const map = iterator.toMap<string, number>()
+            const arr: [string, number][] = [['foo', 1], ['bar', 2]]
+            const iterator = new IteratorWithOperators(arr[Symbol.iterator]())
+            const map = iterator.toMap()
             assert(map instanceof Map, 'instanceof Map')
             assert.deepEqual(Array.from(map), [['foo', 1], ['bar', 2]])
         })
