@@ -118,6 +118,34 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
     }
 
     /**
+     * Finds the first item which satisfies the condition provided as the argument.
+     * The condition is a typeguard and the result has the correct type.
+     * If no argument satisfies the condition, returns undefined.
+     *
+     * @param predicate The predicate with a typeguard signature to search by
+     */
+    find<V extends T>(predicate: (value: T) => value is V): V | undefined
+    /**
+     * Finds the first item which satisfies the condition provided as the argument.
+     * If no item saisfies the condition, returns undefined.
+     *
+     * @param predicate The predicate to search by
+     */
+    find(predicate: (value: T) => boolean): T | undefined
+    find(predicate: any): any {
+        let result: IteratorResult<T>
+        while (true) {
+            result = this.source.next()
+            if (result.done) {
+                return undefined
+            }
+            if (predicate(result.value)) {
+                return result.value
+            }
+        }
+    }
+
+    /**
      * Iterates and checks if `value` is emitted by the Iterator
      *
      * @param value The value to search

@@ -58,6 +58,22 @@ describe('IteratorWithOperators', () => {
             assert.equal(max, 1)
         })
     })
+    describe('find', () => {
+        it('should return the first element which satisfies the predicate', () => {
+            const iterator = new IteratorWithOperators([1, 2, 3, 4][Symbol.iterator]())
+            assert.equal(iterator.find(x => x % 2 === 0), 2)
+        })
+        it('should return undefined if no element is found to satisfy the predicate', () => {
+            const iterator = new IteratorWithOperators([1, 2, 3][Symbol.iterator]())
+            assert.equal(iterator.find(x => x > 5), undefined)
+        })
+        it('should narrow the type when used with a typeguard', () => {
+            const iterator = new IteratorWithOperators([1, 'a', 2, 'b'][Symbol.iterator]())
+            const predicate = (item: any): item is string => typeof item === 'string'
+            const result = iterator.find(predicate)!
+            assert.equal(result.charAt(0), 'a') // tsc will fail here if type is not "string"
+        })
+    })
     describe('includes', () => {
         it('should return true if the element is emitted by the Iterator', () => {
             const iterator = new IteratorWithOperators([1, 2, 3][Symbol.iterator]())
