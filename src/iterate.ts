@@ -246,8 +246,8 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
      * Iterates and returns all `[key, value]` paris emitted by the Iterator as an ES6 Map.
      * Equivalent to passing the Iterator to `new Map()`
      */
-    toMap<K, V>(): Map<K, V> {
-        return new Map<K, V>(this as any)
+    toMap<K, V>(this: IteratorWithOperators<[K, V]>): Map<K, V> {
+        return new Map<K, V>(this)
     }
 }
 
