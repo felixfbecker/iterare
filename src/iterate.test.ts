@@ -30,6 +30,18 @@ describe('IteratorWithOperators', () => {
             assert.equal(iterator.next().done, true)
         })
     })
+    describe('flatten', () => {
+        it('should emit values from nested iterables', () => {
+            const collection = [1, [2, [3]], 4, [5]][Symbol.iterator]()
+            const iterator = new IteratorWithOperators(collection).flatten()
+            assert.equal(iterator.next().value, 1)
+            assert.equal(iterator.next().value, 2)
+            assert.deepEqual(iterator.next().value, [3])
+            assert.equal(iterator.next().value, 4)
+            assert.equal(iterator.next().value, 5)
+            assert.equal(iterator.next().done, true)
+        })
+    })
     describe('reduce', () => {
         it('should reduce all emitted values by calling the reducer', () => {
             const iterator = new IteratorWithOperators([1, 2, 4, 3][Symbol.iterator]())
