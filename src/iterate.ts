@@ -81,7 +81,7 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
     /**
      * Returns a new Iterator that flattens items emitted by the Iterator a single level deep
      */
-    flatten<R>(): IteratorWithOperators<R> {
+    flatten<R>(this: IteratorWithOperators<R | Iterator<R> | Iterable<R>>): IteratorWithOperators<R> {
         return new IteratorWithOperators(new FlattenIterator<R>(this.source))
     }
 
