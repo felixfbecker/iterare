@@ -5,7 +5,8 @@ import { Event, Suite } from 'benchmark'
 import * as IxES5 from 'ix'
 import * as _ from 'lodash'
 import 'rxjs'
-import { IteratorObservable } from 'rxjs/observable/IteratorObservable.js'
+import * as Rx from 'rxjs'
+import * as RxOp from 'rxjs/operators'
 import { iterate } from '../iterate'
 
 const suite = new Suite()
@@ -61,11 +62,13 @@ suite.add('Lodash', () => {
 })
 
 suite.add('RxJS', (deferred: any) => {
-    new IteratorObservable<string>(hugeSet[Symbol.iterator]())
-        .filter((uri: string) => uri.startsWith('file://'))
-        .take(5)
-        .toArray()
-        .map(arr => new Set(arr))
+    Rx.from(hugeSet[Symbol.iterator]())
+        .pipe(
+            RxOp.filter((uri: string) => uri.startsWith('file://')),
+            RxOp.take(5),
+            RxOp.toArray(),
+            RxOp.map(arr => new Set(arr))
+        )
         .subscribe(result => {
             // Finished
         })
