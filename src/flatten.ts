@@ -1,11 +1,11 @@
 import { isIterable } from './utils'
 
-export class FlattenIterator<T> implements Iterator<T> {
+export class FlattenIterator<V> implements Iterator<V> {
     private inner?: Iterator<any>
 
     constructor(private outer: Iterator<any>) {}
 
-    next(): IteratorResult<T> {
+    next(): IteratorResult<V> {
         // Currently iterating over an inner Iterable?
         if (this.inner) {
             const result = this.inner.next()

@@ -14,6 +14,18 @@ describe('IteratorWithOperators', () => {
             assert.equal(joined, '')
         })
     })
+    describe('flatten', () => {
+        it('should flatten nested Iterables', () => {
+            const collection = [1, [2, [3]], 4, [5]]
+            const flattened = new IteratorWithOperators(collection[Symbol.iterator]()).flatten()
+            assert.equal(flattened.next().value, 1)
+            assert.equal(flattened.next().value, 2)
+            assert.deepEqual(flattened.next().value, [3])
+            assert.equal(flattened.next().value, 4)
+            assert.equal(flattened.next().value, 5)
+            assert.equal(flattened.next().done, true)
+        })
+    })
     describe('take', () => {
         it('should take n items from the beginning', () => {
             const iterator = new IteratorWithOperators([1, 2, 3, 4][Symbol.iterator]()).take(2)
