@@ -6,12 +6,16 @@
     "lib": ["es2016", "esnext.asynciterable", "dom"],
     "outDir": "lib",
     "sourceMap": true,
+    "strict": true,
     "declaration": true,
     "declarationMap": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
 }

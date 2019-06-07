@@ -8,16 +8,43 @@
     "node": ">=6"
   },
   "scripts": {
-    "lint": "npm run prettier && npm run tslint",
     "tslint": "tslint -c tslint.json -p tsconfig.json 'src/**/*.ts'",
-    "prettier": "prettier --config .prettierrc --write --list-different \"**/{*.{ts,json,js,md,yml},*.*.yml}\"",
-    "test": "mocha -r source-map-support/register lib/**/*.test.js",
-    "cover": "nyc mocha -r source-map-support/register lib/**/*.test.js",
+    "prettier": "prettier --write --list-different '**/*.{ts,json,js,md,yml}'",
+    "test": "nyc mocha",
     "build": "tsc",
     "watch": "tsc -w",
     "typedoc": "typedoc --out typedoc --tsconfig tsconfig.json --ignoreCompilerErrors --mode file --excludeExternals src",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "semantic-release": "semantic-release"
+  },
+  "nyc": {
+    "all": true,
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.test.ts"
+    ],
+    "reporter": [
+      "text",
+      "json"
+    ]
+  },
+  "mocha": {
+    "spec": "src/**/*.test.ts",
+    "require": "ts-node/register"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "keywords": [
     "iterator",
@@ -45,34 +72,26 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/cli": "^7.2.1",
-    "@commitlint/config-conventional": "^7.1.2",
-    "@reactivex/ix-es2015-cjs": "^2.2.0",
-    "@types/benchmark": "^1.0.30",
-    "@types/lodash": "^4.14.55",
-    "@types/mocha": "^2.2.40",
-    "@types/node": "^7.0.8",
-    "benchmark": "^2.1.3",
-    "husky": "^0.14.3",
-    "ix": "^2.2.0",
-    "lodash": "^4.17.4",
-    "mocha": "^3.2.0",
-    "nyc": "^10.1.2",
-    "prettier": "^1.14.2",
-    "rxjs": "^5.2.0",
-    "semantic-release": "^15.9.12",
-    "source-map-support": "^0.4.14",
-    "tslint": "^5.8.0",
-    "tslint-config-prettier": "^1.6.0",
-    "typedoc": "^0.9.0",
-    "typescript": "~3.2.1"
-  },
-  "nyc": {
-    "include": [
-      "lib/**/*.js"
-    ],
-    "exclude": [
-      "lib/**/*.test.js"
-    ]
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@reactivex/ix-es2015-cjs": "^2.5.3",
+    "@types/benchmark": "^1.0.31",
+    "@types/lodash": "^4.14.134",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^7.10.6",
+    "benchmark": "^2.1.4",
+    "husky": "^2.4.0",
+    "ix": "^2.5.3",
+    "lodash": "^4.17.11",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.0",
+    "rxjs": "^6.5.2",
+    "semantic-release": "^15.13.12",
+    "ts-node": "^8.2.0",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typedoc": "^0.14.2",
+    "typescript": "~3.5.1"
   }
 }

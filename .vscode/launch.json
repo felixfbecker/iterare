@@ -10,12 +10,11 @@
       "name": "Mocha",
       "cwd": "${workspaceRoot}",
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-      "runtimeArgs": ["--require", "source-map-support/register"],
       "args": ["--no-timeouts", "--colors", "--bail", "${workspaceRoot}/lib/**/*.test.js"],
       "internalConsoleOptions": "openOnSessionStart",
       "sourceMaps": true,
       "protocol": "inspector",
-      "outFiles": ["${workspaceRoot}/lib/**/*.js"]
+      "outFiles": ["${workspaceRoot}/lib/**/*.js"],
     },
     {
       "type": "node",
@@ -24,7 +23,7 @@
       "program": "${workspaceRoot}/lib/${fileBasenameNoExtension}.js",
       "sourceMaps": true,
       "protocol": "inspector",
-      "outFiles": ["${workspaceRoot}/lib/**/*.js"]
+      "outFiles": ["${workspaceRoot}/lib/**/*.js"],
     },
     {
       "type": "node",
@@ -32,7 +31,7 @@
       "name": "Attach to Process",
       "address": "localhost",
       "port": 5858,
-      "outFiles": []
-    }
-  ]
+      "outFiles": [],
+    },
+  ],
 }

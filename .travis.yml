@@ -16,10 +16,10 @@ before_install:
   - npm install -g npm@5
 
 script:
-  - npm run lint
+  - npm run prettier -- --write=false
+  - npm run tslint
   - npm run build
-  - npm run cover
-  - nyc report --reporter=json
+  - npm run test
   - bash <(curl -s https://codecov.io/bash) -f coverage/coverage-final.json
 
 jobs:
