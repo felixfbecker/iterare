@@ -10,10 +10,4 @@ describe('FilterIterator', () => {
         assert.equal(filtered.next().value, 6)
         assert.equal(filtered.next().done, true)
     })
-    it('should correctly infer type of the resulting iterable', () => {
-        const collection: IterableIterator<string | number> = [1, 'a'][Symbol.iterator]()
-        const isNumber = (x: string | number): x is number => typeof x === 'number'
-        const filtered = new FilterIterator(collection, isNumber)
-        assert.equal(filtered.next().value.toFixed(2), '1.00') // tsc will fail if .value is not of type "number"
-    })
 })
