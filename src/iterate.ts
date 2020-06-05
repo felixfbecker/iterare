@@ -216,7 +216,7 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
             }
             joined += separator + result.value
         }
-        return joined.substr(1)
+        return joined.substr(separator.length)
     }
 
     /**
