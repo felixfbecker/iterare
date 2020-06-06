@@ -4,6 +4,7 @@ import * as IxES6 from '@reactivex/ix-es2015-cjs'
 import { Event, Suite } from 'benchmark'
 import * as IxES5 from 'ix'
 import * as _ from 'lodash'
+import * as obl from 'obliterator';
 import 'rxjs'
 import * as Rx from 'rxjs'
 import * as RxOp from 'rxjs/operators'
@@ -86,6 +87,17 @@ suite.add('IxJS (ES6)', () => {
         .filter((uri: string) => uri.startsWith('file://'))
         .take(5)
         .toSet()
+})
+
+suite.add('obliterator', () => {
+    return new Set(
+        obl.take(
+            obl.filter(
+                (uri: string) => uri.startsWith('file://'),
+                hugeSet[Symbol.iterator]()
+            ), 5
+        )
+    );
 })
 
 suite.on('cycle', (event: Event) => {
