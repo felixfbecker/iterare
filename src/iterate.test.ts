@@ -13,6 +13,16 @@ describe('IteratorWithOperators', () => {
             const joined = iterator.join()
             assert.equal(joined, '')
         })
+        it("should join with given separator, ''", () => {
+            const iterator = new IteratorWithOperators([1, 2, 'a', 'b'][Symbol.iterator]())
+            const joined = iterator.join('')
+            assert.equal(joined, '12ab')
+        })
+        it("should join with given separator, 'foo'", () => {
+            const iterator = new IteratorWithOperators([1, 2, 'a', 'b'][Symbol.iterator]())
+            const joined = iterator.join('foo')
+            assert.equal(joined, '1foo2fooafoob')
+        })
     })
     describe('flatten', () => {
         it('should flatten nested Iterables', () => {
