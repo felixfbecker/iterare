@@ -30,7 +30,7 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
     /**
      * Returns a new Iterator by running each element thru iteratee
      */
-    map<R>(iteratee: (value: T) => R): IteratorWithOperators<R> {
+    map<R>(iteratee: (value: T, index: number) => R): IteratorWithOperators<R> {
         return new IteratorWithOperators(new MapIterator(this.source, iteratee))
     }
 
@@ -192,14 +192,15 @@ export class IteratorWithOperators<T> implements IterableIterator<T> {
     /**
      * Iterates and invokes `iteratee` for every element emitted by the Iterator
      */
-    forEach(iteratee: (value: T) => any): void {
+    forEach(iteratee: (value: T, index: number) => any): void {
         let result: IteratorResult<T>
+        let index = 0;
         while (true) {
             result = this.source.next()
             if (result.done) {
                 break
             }
-            iteratee(result.value)
+            iteratee(result.value, index++)
         }
     }
 
