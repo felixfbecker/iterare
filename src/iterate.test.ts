@@ -2,6 +2,44 @@ import * as assert from 'assert'
 import { IteratorWithOperators } from './iterate'
 
 describe('IteratorWithOperators', () => {
+    describe('map', () => {
+        it('should map all values to another value', () => {
+            const iterator = new IteratorWithOperators([1, 2, 'a', 'b'][Symbol.iterator]())
+            const mapped = iterator.map(value => value + '-mapped')
+
+            assert.equal(mapped.next().value, '1-mapped')
+            assert.equal(mapped.next().value, '2-mapped')
+            assert.equal(mapped.next().value, 'a-mapped')
+            assert.equal(mapped.next().value, 'b-mapped')
+            assert.equal(mapped.next().done, true)
+        })
+        it('should map have access to the index of the the element', () => {
+            const iterator = new IteratorWithOperators([1, 2, 'a', 'b'][Symbol.iterator]())
+            const mapped = iterator.map((value, index) => value + '-' + index)
+
+            assert.equal(mapped.next().value, '1-0')
+            assert.equal(mapped.next().value, '2-1')
+            assert.equal(mapped.next().value, 'a-2')
+            assert.equal(mapped.next().value, 'b-3')
+            assert.equal(mapped.next().done, true)
+        })
+    })
+    describe('forEach', () => {
+        it('should loop through each value', () => {
+            const values = [1, 2, 'a', 'b']
+            const valuesIterator = values[Symbol.iterator]()
+
+            const iterator = new IteratorWithOperators(values[Symbol.iterator]())
+
+            iterator.forEach((element, index) => {
+                const { value, done } = valuesIterator.next()
+                assert.equal(element, value)
+                assert.equal(done, false)
+            })
+
+            assert.equal(valuesIterator.next().done, true)
+        })
+    })
     describe('join', () => {
         it('should join all emitted values as strings', () => {
             const iterator = new IteratorWithOperators([1, 2, 'a', 'b'][Symbol.iterator]())
